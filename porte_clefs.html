@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>La cabane de Hjort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    emailjs.init("lacabanedehjort@gmail.com");
+
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            emailjs.sendForm("TON_SERVICE_ID", "TON_TEMPLATE_ID", this)
+            .then(function() {
+                alert("Message envoyé !");
+            }, function(error) {
+                alert("Erreur : " + JSON.stringify(error));
+            });
+        });
+    }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
+<script>
+function ajouterAuPanier(nom, prix) {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    panier.push({ nom: nom, prix: prix });
+
+    localStorage.setItem("panier", JSON.stringify(panier));
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
+<script>
+function acheter(nom, prix) {
+
+    // 🔥 on stocke le produit
+    localStorage.setItem("achatDirect", JSON.stringify({
+        nom: nom,
+        prix: prix
+    }));
+
+    // 🔎 vérification (debug)
+    console.log("Produit enregistré :", nom, prix);
+
+    // ➡️ redirection
+    window.location.href = "paiement.html";
+}
+</script>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<script>
+function voirPCÆgishjalmr(id) {
+  localStorage.setItem("Porte-clefs Ægishjalmr", id);
+  window.location.href = "porte-clefs_Ægishjalmr.html";
+}
+function voirPCCroixCelte(id) {
+  localStorage.setItem("Porte-clefs Croix Celte", id);
+  window.location.href = "porte-clefs_croix_celte.html";
+}
+function voirPCDragon(id) {
+  localStorage.setItem("Porte-clefs Dragon", id);
+  window.location.href = "porte-clefs_dragon.html";
+}
+function voirPCNoeud_de_bouclier(id) {
+  localStorage.setItem("Porte-clefs Noeud de Bouclier", id);
+  window.location.href = "porte-clefs_nœud_de_bouclier.html";
+}
+function voirPCNoeud_de_dara(id) {
+  localStorage.setItem("Porte-clefs Noeud de Dara", id);
+  window.location.href = "porte-clefs_nœud_de_dara.html";
+}
+function voirPCNoeud_de_salomon(id) {
+  localStorage.setItem("Porte-clefs Noeud de Salomon", id);
+  window.location.href = "porte-clefs_nœud_de_salomon.html";
+}
+function voirPCTriple_corne_dodin(id) {
+  localStorage.setItem("Porte-clefs Triple Corne d'Odin", id);
+  window.location.href = "porte-clefs_triple_corne_d'odin.html";
+}
+function voirPCValkirie(id) {
+  localStorage.setItem("Porte-clefs Valkirie", id);
+  window.location.href = "porte-clefs_valkirie.html";
+}
+function voirPCValknut(id) {
+  localStorage.setItem("Porte-clefs Valknut", id);
+  window.location.href = "porte-clefs_valknut.html";
+}
+function voirPCCroix_celte_découpée(id) {
+  localStorage.setItem("Porte-clefs Croix Celte Découpée", id);
+  window.location.href = "porte-clefs_croix_celte_découpée.html";
+}
+function voirPCCroix_templière_découpée(id) {
+  localStorage.setItem("Porte-clefs Croix Templière Découpée", id);
+  window.location.href = "porte-clefs_croix_templière_découpée.html";
+}
+function voirPCNoeud_de_salomon_découpé(id) {
+  localStorage.setItem("Porte-clefs Noeud de Salomon Découpé", id);
+  window.location.href = "porte-clefs_noeud_de_salomon_découpé.html";
+}
+function voirPCNoeud_de_dara_découpé(id) {
+  localStorage.setItem("Porte-clefs Noeud de Dara Découpé", id);
+  window.location.href = "porte-clefs_noeud_de_dara_découpé.html";
+}
+function voirPCCrucifix_fleuri(id) {
+  localStorage.setItem("Porte-clefs Crucifix Fleuri", id);
+  window.location.href = "porte-clefs_crucifix_fleuri.html";
+}
+function voirPCCrucifix_simple(id) {
+  localStorage.setItem("Porte-clefs Crucifix Simple", id);
+  window.location.href = "porte-clefs_crucifix_simple.html";
+}
+function voirPCMjolnir_corbeau(id) {
+  localStorage.setItem("Porte-clefs Mjolnir Corbeau", id);
+  window.location.href = "porte-clefs_mjolnir_corbeau.html";
+}
+function voirPCMjolnir_eclair(id) {
+  localStorage.setItem("Porte-clefs Mjolnir Éclair", id);
+  window.location.href = "porte-clefs_mjolnir_eclair.html";
+}
+function voirPCMjolnir_thurisaz(id) {
+  localStorage.setItem("Porte-clefs Mjolnir Thurisaz", id);
+  window.location.href = "porte-clefs_mjolnir_thurisaz.html";
+}
+function voirPCPhoenix_en_vol(id) {
+  localStorage.setItem("Porte-clefs Phoenix en Vol", id);
+  window.location.href = "porte-clefs_phoenix_en_vol.html";
+}
+function voirPCPhoenix_posant(id) {
+  localStorage.setItem("Porte-clefs Phoenix Posant", id);
+  window.location.href = "porte-clefs_phoenix_posant.html";
+}
+function voirPCYggdrasil(id) {
+  localStorage.setItem("Porte-clefs Yggdrasil", id);
+  window.location.href = "porte-clefs_yggdrasil.html";
+}
+</script>
+<body>
+
+<header>
+    <nav>
+         <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+        </ul>
+    </nav>
+</header>
+
+<section class="services">
+    <h2>Portes-clefs</h2>
+    <div class="cards">
+
+    <div class="card" onclick="voirPCÆgishjalmr('Porte-clefs Ægishjalmr')">
+      <img src="Porte-clef_aegishjalmur.jpg" width="144" height="192" class="rotate" alt="Article 1">
+      <h3>Porte-clefs Ægishjalmr</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCCroixCelte('Porte-clefs Croix Celte')">
+      <img src="Porte-clef_croix_celte.jpg" width="144" height="192" class="rotate" alt="Mon Article">
+      <h3>Porte-clefs Croix Celte</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCDragon('Porte-clefs Dragon')">
+      <img src="Porte-clef_dragon.jpg" width="144" height="192" class="rotate" alt="Article 1">
+      <h3>Porte-clefs Dragon</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCNoeud_de_bouclier('Porte-clefs Nœud de Bouclier')">
+      <img src="Porte-clef_noeud_de_bouclier.jpg" width="144" height="192" class="rotate" alt="Mon Article">
+      <h3>Porte-clefs Nœud de Bouclier</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCNoeud_de_dara('Porte-clefs Noeud de Dara')">
+      <img src="Porte-clef_noeud_de_dara.jpg" width="144" height="192" class="rotate" alt="Article 1">
+      <h3>Porte-clefs Nœud de Dara</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCNoeud_de_salomon('Porte-clefs Nœud de Salomon')">
+      <img src="Porte-clef_noeud_de_salomon.jpg" width="144" height="192" class="rotate" alt="Mon Article">
+      <h3>Porte-clefs Nœud de Salomon</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCTriple_corne_dodin('Porte-clefs Triple Corne d\'Odin')">
+      <img src="Porte-clef_triple_corne_d'odin.jpg" width="144" height="192" class="rotate" alt="Article 1">
+      <h3>Porte-clefs Triple Corne d'Odin</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCValkirie('Porte-clefs Valkirie')">
+      <img src="Porte-clef_valkirie.jpg" width="144" height="192" class="rotate" alt="Mon Article">
+      <h3>Porte-clefs Valkirie</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCValknut('Porte-clefs Valknut')">
+      <img src="Porte-clef_valknut.jpg" width="144" height="192" class="rotate" alt="Article 1">
+      <h3>Porte-clefs Valknut</h3>
+      <p>5€</p>
+    </div>
+
+    <div class="card" onclick="voirPCCroix_celte_découpée('Porte-clefs Croix Celte Découpée')">
+      <img src="Porte-clef_croix_celte_découpée.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Croix Celte Découpée</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCCroix_templière_découpée('Porte-clefs Croix Templière Découpée')">
+      <img src="Porte-clef_croix_templière_découpée.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Croix Templière Découpée</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCNoeud_de_salomon_découpé('Porte-clefs Nœud de Salomon Découpé')">
+      <img src="Porte-clef_noeud_de_salomon_découpé.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Nœud de Salomon Découpé</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCNoeud_de_dara_découpé('Porte-clefs Noeud de Dara Découpé')">
+      <img src="Porte-clef_noeud_de_dara_découpé.jpg" width="144" height="192" alt="Article 1">
+      <h3>Porte-clefs Noeud de Dara Découpé</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCCrucifix_fleuri('Porte-clefs Crucifix Fleuri')">
+      <img src="Porte-clef_crucifix_fleuri.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Crucifix Fleuri</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCCrucifix_simple('Porte-clefs Crucifix Simple')">
+      <img src="Porte-clef_crucifix_simple.jpg" width="144" height="192" alt="Article 1">
+      <h3>Porte-clefs Crucifix Simple</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCMjolnir_corbeau('Porte-clefs Mjolnir Corbeau')">
+      <img src="Porte-clef_mjolnir_corbeau.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Mjolnir Corbeau</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCMjolnir_eclair('Porte-clefs Mjolnir Éclair')">
+      <img src="Porte-clef_mjolnir_éclair.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Mjolnir Éclair</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCMjolnir_thurisaz('Porte-clefs Mjolnir Thurisaz')">
+      <img src="Porte-clef_mjolnir_thurisaz.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Mjolnir Thurisaz</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCPhoenix_en_vol('Porte-clefs Phoenix en Vol')">
+      <img src="Porte-clef_phoenix_en_vol.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Phoenix en Vol</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCPhoenix_posant('Porte-clefs Phoenix_posant')">
+      <img src="Porte-clef_phoenix_posant.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Phoenix Posant</h3>
+      <p>8€</p>
+    </div>
+
+    <div class="card" onclick="voirPCYggdrasil('Porte-clefs Yggdrasil')">
+      <img src="Porte-clef_yggdrasil.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Yggdrasil</h3>
+      <p>5€</p>
+    </div>
+
+  </div>
+</section>
+
+  <footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+  </footer>
+
+
+</body>
+</html>
