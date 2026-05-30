@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>La cabane de Hjort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    emailjs.init("lacabanedehjort@gmail.com");
+
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            emailjs.sendForm("TON_SERVICE_ID", "TON_TEMPLATE_ID", this)
+            .then(function() {
+                alert("Message envoyé !");
+            }, function(error) {
+                alert("Erreur : " + JSON.stringify(error));
+            });
+        });
+    }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<script>
+function voirPC(id) {
+  localStorage.setItem("Porte-clefs", id);
+  window.location.href = "porte_clefs.html";
+}
+function voirP(id) {
+  localStorage.setItem("Plateau", id);
+  window.location.href = "plateau.html";
+}
+function voirDdV(id) {
+  localStorage.setItem("Dessous de verre", id);
+  window.location.href = "dessous_verre.html";
+}
+function voirMP(id) {
+  localStorage.setItem("Marque page", id);
+  window.location.href = "marque_page.html";
+}
+</script>
+<body>
+
+<header>
+    <nav>
+         <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+        </ul>
+    </nav>
+</header>
+
+<section id="avis" class="services">
+    <div class="services">
+        <div id="reviews-list"></div>
+
+    <h1>Catégories</h1>
+
+    <div class="cards">
+        <div class="card" onclick="voirPC('Porte-clefs')" style="background-color:#333; color:#e6e6e6;">
+            <h3>Porte-clefs</h3>
+        </div>
+    
+        <div class="card" onclick="voirP('Plateaux')" style="background-color:#333; color:#e6e6e6;">
+            <h3>Plateaux</h3>
+        </div>
+    
+        <div class="card" onclick="voirDdV('Dessous de verre')" style="background-color:#333; color:#e6e6e6;">
+            <h3>Dessous de verre</h3>
+        </div>
+    
+        <div class="card" onclick="voirMP('Marque page')" style="background-color:#333; color:#e6e6e6;">
+            <h3>Marque page</h3>
+        </div>
+    </div>
+</section>
+
+
+<section id="mentionslegales" class="about">
+    <a href="mentions_légales.html">Mentions légales</a>
+</section>
+
+<footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
