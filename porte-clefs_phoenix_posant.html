@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>La cabane de Hjort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    emailjs.init("lacabanedehjort@gmail.com");
+
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            emailjs.sendForm("TON_SERVICE_ID", "TON_TEMPLATE_ID", this)
+            .then(function() {
+                alert("Message envoyé !");
+            }, function(error) {
+                alert("Erreur : " + JSON.stringify(error));
+            });
+        });
+    }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
+<script>
+function ajouterAuPanier(nom, prix) {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    panier.push({ nom: nom, prix: prix });
+
+    localStorage.setItem("panier", JSON.stringify(panier));
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
+<script>
+function acheter(nom, prix) {
+
+    // 🔥 on stocke le produit
+    localStorage.setItem("achatDirect", JSON.stringify({
+        nom: nom,
+        prix: prix
+    }));
+
+    // 🔎 vérification (debug)
+    console.log("Produit enregistré :", nom, prix);
+
+    // ➡️ redirection
+    window.location.href = "paiement.html";
+}
+</script>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<body>
+
+<header>
+    <nav>
+         <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+        </ul>
+    </nav>
+</header>
+
+<section class="service">
+    <h2>Portes-clefs</h2>
+    <div class="cards">
+        </div>
+        <div class="article-card">
+            <img src="Porte-clef_phoenix_posant.jpg" width="144" height="192" alt="Article 1">
+            <h3>Porte-clefs Phoenix posant</h3>
+            <p>8€</p>
+            <p>Porte-clefs rect-verso découpé dans du medium de taille unique et personnalisé.</p>
+            <p>En stock</p>
+            <button onclick="acheter('Porte-clefs Phoenix posant', 8)">Acheter</button>
+    <button onclick="ajouterAuPanier('Porte-clefs Phoenix posant', 8)">
+        Ajouter au panier
+    </button>
+        </div>
+    </div>
+</section>
+
+  <footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+  </footer>
+
+
+</body>
+</html>
