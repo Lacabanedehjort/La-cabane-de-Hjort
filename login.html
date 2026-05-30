@@ -59,27 +59,6 @@ function logout() {
 <footer>
     <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
 </footer>
-    
-<script>
-document.getElementById("login-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    const user = users.find(u => u.username === username && u.password === password);
-
-    if (user) {
-        localStorage.setItem("currentUser", username);
-        alert("Connexion réussie !");
-        window.location.href = "index.html";
-    } else {
-        alert("Identifiants incorrects");
-    }
-});
-</script>
 
 </body>
 </html>
