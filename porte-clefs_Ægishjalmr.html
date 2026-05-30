@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix });
+    panier.push({ nom: nom, prix: prix, image: "image/Porte-clef_aegishjalmur.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
@@ -117,7 +117,7 @@ function logout() {
     <div class="cards">
         </div>
         <div class="article-card">
-            <img src="Porte-clef_aegishjalmur.jpg" width="144" height="192" class="rotate" alt="Article 1">
+            <img src="Porte-clef_aegishjalmur.jpg" width="144" height="192" alt="Article 1">
             <h3>Porte-clefs Ægishjalmr</h3>
             <p>5€</p>
             <p>Porte-clefs rectangle avec partie supérieur et inférieur arrondie et accroche en métal.</p>
