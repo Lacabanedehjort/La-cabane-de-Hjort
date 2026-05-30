@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix, image: "image/Dessous_verre_loup.jpg" });
+    panier.push({ nom: nom, prix: prix, image: "Dessous_verre_loup.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
@@ -111,7 +111,7 @@ function logout() {
     <h2>Dessous de verre</h2>
     <div class="cards">
         <div class="article-card">
-            <img src="image/Dessous_verre_loup.jpg" width="144" height="192" alt="Article 1">
+            <img src="Dessous_verre_loup.jpg" width="144" height="192" alt="Article 1">
             <h3>Dessous de Verre Loup</h3>
             <p>8€</p>
             <p>Dessous de verre rond de 10 cm de diamètre.</p>
