@@ -43,6 +43,8 @@ function logout() {
     </nav>
 </header>
 
+<main>
+    <section id="commande" class="service">
 <h1>Achat immédiat</h1>
 
 <!-- 🧾 Récap produit -->
@@ -56,6 +58,12 @@ function logout() {
 
     <button type="submit">Payer</button>
 </form>
+</section>
+</main>
+
+<footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+</footer>
 
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -127,6 +135,15 @@ window.onload = function() {
 
 };
 </script>
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
 </body>
 </html>
