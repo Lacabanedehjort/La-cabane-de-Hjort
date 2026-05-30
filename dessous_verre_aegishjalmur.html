@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix, image: "image/Dessous_verre_aegishjalmur.jpg" });
+    panier.push({ nom: nom, prix: prix, image: "Dessous_verre_aegishjalmur.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
