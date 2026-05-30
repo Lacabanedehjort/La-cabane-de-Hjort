@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix, image: "image/porte-clef_mjolnir_thurisaz.jpg" });
+    panier.push({ nom: nom, prix: prix, image: "porte-clef_mjolnir_thurisaz.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
