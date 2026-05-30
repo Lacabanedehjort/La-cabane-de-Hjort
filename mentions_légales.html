@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales - Gravures sur bois</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2 { text-align: center; }
+    a { color: #0066cc; text-decoration: none; }
+    main { max-width: 800px; margin: auto; }
+    main {background-color : #fff; padding : 20px 0; }
+    header {background-color : #836435; }
+    body {background-color : #fff; }
+  </style>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>La cabane de Hjort</title>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    emailjs.init("lacabanedehjort@gmail.com");
+
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            emailjs.sendForm("TON_SERVICE_ID", "TON_TEMPLATE_ID", this)
+            .then(function() {
+                alert("Message envoyé !");
+            }, function(error) {
+                alert("Erreur : " + JSON.stringify(error));
+            });
+        });
+    }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<body>
+
+<header>
+    <nav>
+       <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="section">>
+
+    <h1>Mentions légales</h1>
+
+    <section>
+      <h2>Éditeur du site</h2>
+      <p><strong>Nom / Société :</strong> La cabane de Hjort</p>
+      <p><strong>Adresse :</strong> 1 rue des potiers, 50640 Le Teilleul, France</p>
+      <p><strong>SIRET :</strong> Futur numéro de siret</p>
+      <p><strong>Responsable de publication :</strong> Tastet Vincent</p>
+      <p><strong>Contact :</strong> lacabanedehjort@gmail.com</p>
+      <p><strong>URL :</strong> https://lacabanedehjort.github.io/La-Cabane-de-Hjort/</p>
+    </section>
+
+    <section>
+      <h2>Hébergement du site</h2>
+      <p><strong>Hébergeur :</strong> GitHub, Inc.</p>
+      <p><strong>Adresse de l'hébergeur :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</p>
+      <p><strong>Téléphone :</strong> +1 877-448-4820</p>
+    </section>
+
+    <section>
+      <h2>TVA</h2>
+      <p>Taux de TVA appliqué aux gravures sur bois : 20 % (sauf cas particulier d'œuvres originales). Si vous êtes auto-entrepreneur et en franchise de TVA, vous ne facturez pas la TVA.</p>
+    </section>
+
+    <section>
+      <h2>Propriété intellectuelle</h2>
+      <p>Toutes les gravures, photos et contenus de ce site sont la propriété exclusive de l'atelier. Toute reproduction ou utilisation sans autorisation est interdite.</p>
+    </section>
+
+    <section>
+      <h2>Données personnelles et RGPD</h2>
+      <p>Les données collectées (email, adresse) sont utilisées uniquement pour le traitement des commandes. Conformément au RGPD, vous pouvez demander l'accès, la modification ou la suppression de vos données.</p>
+    </section>
+
+    <section>
+      <h2>Responsabilité</h2>
+      <p>L'atelier décline toute responsabilité en cas d'erreurs sur le site, de rupture de stock, ou de dommages liés à l'utilisation des gravures.</p>
+    </section>
+
+    <section>
+      <h2>Conditions de vente</h2>
+      <p>Pour plus de détails sur les commandes, livraison, rétractation et remboursement, consultez nos <a href="cgv.html">Conditions Générales de Vente (CGV)</a>.</p>
+    </section>
+
+</section>
+
+  <footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+  </footer>
+</body>
+</html>

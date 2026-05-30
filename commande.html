@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>La cabane de Hjort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<body>
+
+<header>
+    <nav>
+        <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+</li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<h1>Finaliser votre commande</h1>
+
+<!-- 🧾 Récapitulatif -->
+<div id="recap"></div>
+
+<!-- 📦 Formulaire -->
+<form id="commande-form">
+    <input type="text" id="nom" placeholder="Nom complet" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="adresse" placeholder="Adresse" required>
+
+    <button type="submit">Valider la commande</button>
+</form>
+
+</main>
+
+<footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+</footer>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    // 🔐 CONFIG EmailJS
+    emailjs.init("FHFf7MN9Fhd6TisH_");
+
+    // 🛒 récupération panier
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    const recap = document.getElementById("recap");
+    const compteur = document.getElementById("cart-count");
+
+    // 🧮 compteur
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+
+    // ❌ panier vide
+    if (panier.length === 0) {
+        recap.innerHTML = "<p>Votre panier est vide</p>";
+        return;
+    }
+
+    // 💰 calcul total
+    let total = 0;
+    panier.forEach(p => total += p.prix);
+
+    let fraisPort = total >= 50 ? 0 : 5;
+    let totalFinal = total + fraisPort;
+
+    // 🧾 affichage
+    recap.innerHTML = `
+        <h3>Votre commande :</h3>
+        <ul>
+            ${panier.map(p => `<li>${p.nom} - ${p.prix}€</li>`).join("")}
+        </ul>
+        <p>Produits : ${total}€</p>
+        <p>Frais de port : ${fraisPort}€</p>
+        <strong>Total : ${totalFinal}€</strong>
+    `;
+
+    // 📧 envoi commande
+    document.getElementById("commande-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let details = panier.map(p => `${p.nom} - ${p.prix}€`).join("\n");
+
+        emailjs.send("service_wsueymf", "template_lgkejta", {
+            nom: document.getElementById("nom").value,
+            email: document.getElementById("email").value,
+            adresse: document.getElementById("adresse").value,
+            commande: details,
+            total: totalFinal + "€",
+            frais_port: fraisPort + "€"
+        })
+        .then(function() {
+            alert("✅ Commande envoyée !");
+            localStorage.removeItem("panier");
+            window.location.href = "index.html";
+        })
+        .catch(function(error) {
+            console.error("ERREUR :", error);
+            alert(error.text || "❌ Erreur lors de l'envoi");
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>

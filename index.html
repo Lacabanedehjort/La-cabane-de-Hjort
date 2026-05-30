@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>La cabane de Hjort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    emailjs.init("lacabanedehjort@gmail.com");
+
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            emailjs.sendForm("TON_SERVICE_ID", "TON_TEMPLATE_ID", this)
+            .then(function() {
+                alert("Message envoyé !");
+            }, function(error) {
+                alert("Erreur : " + JSON.stringify(error));
+            });
+        });
+    }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
+
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+    const reviewsList = document.getElementById("reviews-list");
+    const form = document.getElementById("review-form");
+
+    function displayReviews() {
+        reviewsList.innerHTML = "";
+
+        reviews.forEach(review => {
+            const div = document.createElement("div");
+            div.classList.add("review");
+
+            div.innerHTML = `
+                <strong>${review.name}</strong> - ${"⭐".repeat(parseInt(review.rating))}
+                <p>${review.comment}</p>
+            `;
+
+            reviewsList.appendChild(div);
+        });
+    }
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const newReview = {
+            name: document.getElementById("name").value,
+            rating: document.getElementById("rating").value,
+            comment: document.getElementById("comment").value
+        };
+
+        reviews.push(newReview);
+        localStorage.setItem("reviews", JSON.stringify(reviews));
+
+        form.reset();
+        displayReviews();
+    });
+
+    displayReviews();
+});
+</script>
+<body>
+
+<header>
+    <nav>
+        <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+</li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p></p>
+        <h1>Créations artisanales et personnalisées</h1>
+        <p>Des créations artisanales conçues avec précision et passion</p>
+        <p>Gravure laser</p>
+        <a href="contact.html" class="btn">Demander un devis</a>
+        <p> </p>
+    </div>
+</section>
+
+<section id="services" class="services">
+    <h2>Nos services</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Gravure laser</h3>
+            <p>Bois, cuir et objets personnalisés avec précision</p>
+        </div>
+        <div class="card">
+            <h3>Créations sur demande</h3>
+            <p>Design unique selon vos idées et vos envies</p>
+        </div>
+    </div>
+</section>
+
+<section>
+<hr class="separator">
+</section>
+
+<section id="avis" class="services">
+    <h2>Avis clients</h2>
+    <div class="services">
+        <a href="avis.html" class="btn">Laisser un avis</a>
+    </div>
+</section>
+
+<section id="apropos" class="about premium-about">
+    <h2>À propos</h2>
+
+    <p class="intro">
+        <strong>La cabane de Hjort</strong> est née d'une passion pour l'artisanat et l'univers nordique. 
+        Hjort est un prénom vikink signifiant "Cerf" en vieux norois. J'ai choisis ce nom car l'animal qui me correspond le plus est le cerf, étant aussi un animal que j'apprécie énorment. Je mets mes compétences à leur potentiel maximal pour vous offrir les meilleures créations possibles dans l'univers de la gravure laser. Chaque designs sont travaillés puis programmés pour qu'ils soient les plus proches possible de la perfection.
+    </p>
+
+    <div class="about-block">
+        <h3>Un savoir-faire artisanal</h3>
+        <p>
+            Chaque pièce est conçue avec exigence et minutie. Derrière chaque création se cache un travail de précision où le détail fait toute la différence. 
+            L'objectif : proposer des objets uniques, à la fois esthétiques, durables et porteurs de sens.
+        </p>
+    </div>
+
+    <div class="about-block process">
+    <h3>Un processus maîtrisé de A à Z</h3>
+
+    <div class="steps">
+        <div class="step">
+            <span>01</span>
+            <h4>Conception</h4>
+            <p>Création du design, inspiré de l'univers nordique ou entièrement personnalisé selon vos idées.</p>
+        </div>
+
+        <div class="step">
+            <span>02</span>
+            <h4>Préparation</h4>
+            <p>Optimisation du visuel pour garantir une gravure nette, précise et équilibrée.</p>
+        </div>
+
+        <div class="step">
+            <span>03</span>
+            <h4>Gravure</h4>
+            <p>Réalisation avec une technologie laser haute précision sur bois, cuir et autres matériaux.</p>
+        </div>
+
+        <div class="step">
+            <span>04</span>
+            <h4>Contrôle</h4>
+            <p>Vérification minutieuse de chaque pièce avant expédition.</p>
+        </div>
+    </div>
+</div>
+
+    <div class="about-block">
+        <h3>Une attention portée à chaque détail</h3>
+        <p>
+            Avant expédition, chaque pièce est soigneusement contrôlée afin de garantir un rendu impeccable. 
+            Ce souci du détail permet d'offrir des créations qui répondent pleinement aux attentes et qui s'inscrivent dans le temps.
+        </p>
+    </div>
+
+    <p class="signature">
+        Plus qu'un simple objet, chaque création est pensée comme une pièce unique, façonnée avec passion et précision.
+    </p>
+</section>
+
+<section>
+<hr class="separator">
+</section>
+
+<section id="mentionslegales" class="about">
+    <a href="mentions_légales.html">Mentions légales</a>
+</section>
+
+<footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+</footer>
+
+</body>
+</html>

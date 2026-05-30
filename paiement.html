@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Paiement</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<body>
+    
+<header>
+    <nav>
+        <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+</li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Achat immédiat</h1>
+
+<!-- 🧾 Récap produit -->
+<div id="recap"></div>
+
+<!-- 📦 Formulaire -->
+<form id="paiement-form">
+    <input type="text" id="nom" placeholder="Nom complet" required><br><br>
+    <input type="email" id="email" placeholder="Email" required><br><br>
+    <input type="text" id="adresse" placeholder="Adresse" required><br><br>
+
+    <button type="submit">Payer</button>
+</form>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+window.onload = function() {
+
+    // 🔐 INIT EMAILJS
+    emailjs.init("FHFf7MN9Fhd6TisH_");
+
+    const recap = document.getElementById("recap");
+    const form = document.getElementById("paiement-form");
+
+    // 🔥 RÉCUPÉRATION PRODUIT
+    const produit = JSON.parse(localStorage.getItem("achatDirect"));
+
+    // ❌ Aucun produit
+    if (!produit) {
+        recap.innerHTML = "<p>❌ Aucun produit sélectionné</p>";
+        form.style.display = "none";
+        return;
+    }
+
+    // ✅ AFFICHAGE PRODUIT
+    recap.innerHTML = `
+        <h3>Votre achat :</h3>
+        <p><strong>${produit.nom}</strong></p>
+        <p>Prix : ${produit.prix}€</p>
+    `;
+
+    // 🧾 ENVOI FORMULAIRE
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const nom = document.getElementById("nom").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const adresse = document.getElementById("adresse").value.trim();
+
+        // ❌ Vérification
+        if (!nom || !email || !adresse) {
+            alert("❌ Merci de remplir tous les champs");
+            return;
+        }
+
+        // 📧 ENVOI EMAIL
+        emailjs.send("service_wsueymf", "template_lgkejta", {
+            nom: nom,
+            email: email,
+            adresse: adresse,
+            commande: produit.nom + " - " + produit.prix + "€",
+            total: produit.prix + "€",
+            frais_port: "0€"
+        })
+        .then(function() {
+            alert("✅ Commande envoyée avec succès !");
+            
+            // vider produit
+            localStorage.removeItem("achatDirect");
+
+            // redirection
+            window.location.href = "index.html";
+        })
+        .catch(function(error) {
+            console.error("ERREUR EMAILJS :", error);
+            alert("❌ Erreur : " + (error.text || error.message));
+        });
+
+    });
+
+};
+</script>
+
+</body>
+</html>

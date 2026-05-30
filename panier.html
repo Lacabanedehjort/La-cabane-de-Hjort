@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>La cabane de Hjort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+    emailjs.init("lacabanedehjort@gmail.com");
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("TON_SERVICE_ID", "TON_TEMPLATE_ID", this)
+    .then(function() {
+        alert("Message envoyé !");
+    }, function(error) {
+        alert("Erreur : " + JSON.stringify(error));
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    emailjs.init("lacabanedehjort@gmail.com");
+
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            emailjs.sendForm("TON_SERVICE_ID", "TON_TEMPLATE_ID", this)
+            .then(function() {
+                alert("Message envoyé !");
+            }, function(error) {
+                alert("Erreur : " + JSON.stringify(error));
+            });
+        });
+    }
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+    const compteur = document.getElementById("cart-count");
+    if (compteur) {
+        compteur.innerText = panier.length;
+    }
+});
+</script>
+<script>
+function commander() {
+    window.location.href = "commande.html";
+}
+</script>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<script>
+function retirerProduit(index) {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    panier.splice(index, 1); // 🔥 enlève 1 seul élément
+
+    localStorage.setItem("panier", JSON.stringify(panier));
+
+    afficherPanier(); // rafraîchir l'affichage
+}
+</script>
+<body>
+
+<header>
+    <nav>
+         <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+        </ul>
+    </nav>
+</header>
+
+<section class="service">
+    <h1>🛒 Mon panier</h1>
+    <ul id="cart-items"></ul>
+    <p id="cart-total"></p>
+    <button onclick="commander()" style="background-color: #e6e6e6; color: black; border: none; padding: 5px 10px; cursor: pointer;">Acheter</button>
+    <button onclick="viderPanier()" style="background-color: #e6e6e6; color: black; border: none; padding: 5px 10px; cursor: pointer;">Vider le panier</button>
+</section>
+
+<footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+</footer>
+
+<script>
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+function afficherPanier() {
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    const items = document.getElementById("cart-items");
+    const totalElt = document.getElementById("cart-total");
+
+    items.innerHTML = "";
+    let total = 0;
+
+    panier.forEach((item, index) => {
+        total += item.prix;
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            ${item.nom} - ${item.prix}€
+            <button onclick="retirerProduit(${index})" style="background-color: #e6e6e6; color: black; border: none; padding: 5px 10px; cursor: pointer;">Retirer le produit</button>
+        `;
+
+        items.appendChild(li);
+    });
+
+    totalElt.innerText = "Total : " + total + "€";
+}
+
+function viderPanier() {
+    panier = [];
+    localStorage.setItem("panier", JSON.stringify(panier));
+    afficherPanier();
+}
+
+afficherPanier();
+</script>
+
+</body>
+</html>
