@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix, image: "image/Porte-clef_croix_celte_découpée.jpg" });
+    panier.push({ nom: nom, prix: prix, image: "Porte-clef_croix_celte_découpée.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
@@ -117,7 +117,7 @@ function logout() {
     <div class="cards">
         </div>
         <div class="article-card">
-            <img src="image/Porte-clef_croix_celte_découpée.jpg" width="144" height="192" alt="Article 1">
+            <img src="Porte-clef_croix_celte_découpée.jpg" width="144" height="192" alt="Article 1">
             <h3>Porte-clefs Croix Celte Découpée</h3>
             <p>8€</p>
             <p>Porte-clefs rect-verso découpé dans du medium de taille unique et personnalisé.</p>
