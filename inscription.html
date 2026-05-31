@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un compte</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+
+<body>
+
+    <header>
+    <nav>
+        <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+</li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Créer un compte</h1>
+
+<form id="register-form">
+    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button type="submit">S'inscrire</button>
+</form>
+
+<p>Déjà un compte ? <a href="login.html">Se connecter</a></p>
+
+<script>
+document.getElementById("register-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Vérifie si utilisateur existe déjà
+    if (users.find(user => user.username === username)) {
+        alert("Utilisateur déjà existant !");
+        return;
+    }
+
+    users.push({ username, password });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Compte créé !");
+    window.location.href = "login.html";
+});
+</script>
+
+</body>
+</html>
