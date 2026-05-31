@@ -273,7 +273,7 @@ function voirPCOuroboros_et_valknut(id) {
 }
 function voirPCValkyrie(id) {
   localStorage.setItem("Porte-clefs Valkyrie", id);
-  window.location.href = "porte-clef_Valkyrie.html";
+  window.location.href = "porte-clef_valkyrie.html";
 }
 function voirPCVegvisir_2(id) {
   localStorage.setItem("Porte-clefs Vegvisir", id);
@@ -282,6 +282,22 @@ function voirPCVegvisir_2(id) {
 function voirYggdrasil_avec_Symbole(id) {
     localStorage.setItem("Porte-clefs Yggdrasil avec Symbole", id);
     window.location.href = "porte-clefs_yggdrasil_avec_symbole.html";
+}
+function voirPCDragon_valknut(id) {
+  localStorage.setItem("Porte-clefs Dragon Valknut", id);
+  window.location.href = "porte-clef_dragon_valknut.html";
+}
+function voirPCValkirie_2(id) {
+  localStorage.setItem("Porte-clefs Valkirie", id);
+  window.location.href = "porte-clef_valkirie_2.html";
+}
+function voirPCMjolnir_avec_Noeud(id) {
+  localStorage.setItem("Porte-clefs Mjolnir avec Noeud", id);
+  window.location.href = "porte-clef_mjolnir_avec_noeud.html";
+}
+function voirMjolnir_Corbeau_2(id) {
+    localStorage.setItem("Porte-clefs Mjolnir Corbeau ", id);
+    window.location.href = "porte-clefs_mjolnir_corbeau_2.html";
 }
 </script>
 <body>
@@ -591,6 +607,31 @@ function voirYggdrasil_avec_Symbole(id) {
       <h3>Porte-clefs Vegvisir</h3>
       <p>6€</p>
     </div>
+
+    <div class="card" onclick="voirPCDragon_valknut('Porte-clefs Dragon Valknut')">
+      <img src="Porte-clef Dragon Valknut.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Dragon Valknut</h3>
+      <p>6€</p>
+    </div>
+
+    <div class="card" onclick="voirPCMjolnir_avec_Noeud('Porte-clefs Mjolnir avec Noeud')">
+      <img src="Porte-clef Mjolnir avec Noeud.jpg" width="144" height="192" alt="Article 1">
+      <h3>Porte-clefs Mjolnir avec Noeud</h3>
+      <p>6€</p>
+    </div>
+
+    <div class="card" onclick="voirPCMjolnir_Corbeau_2('Porte-clefs Mjolnir Corbeau')">
+      <img src="Porte-clef Mjolnir Corbeau.jpg" width="144" height="192" alt="Mon Article">
+      <h3>Porte-clefs Mjolnir Corbeau</h3>
+      <p>6€</p>
+    </div>
+
+    <div class="card" onclick="voirPCValkirie_2('Porte-clefs Valkirie')">
+      <img src="Porte-clef Valkirie.jpg" width="144" height="192" alt="Article 1">
+      <h3>Porte-clefs Valkirie</h3>
+      <p>6€</p>
+    </div>
+
 
   </div>
 </section>
