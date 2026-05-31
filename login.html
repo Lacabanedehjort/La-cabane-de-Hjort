@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<p id="user-info"></p>
+<button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
+<script>
+const user = localStorage.getItem("currentUser");
+
+if (user) {
+    document.getElementById("user-info").innerText = "Connecté : " + user;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+</script>
+<body>
+
+    <header>
+    <nav>
+        <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+</li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Connexion</h1>
+
+<form id="login-form">
+    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button type="submit">Se connecter</button>
+</form>
+
+<p>Pas de compte ? <a href="inscription.html">S'inscrire</a></p>
+
+
+<script>
+document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const user = users.find(u => u.username === username && u.password === password);
+
+    if (user) {
+        localStorage.setItem("currentUser", username);
+        alert("Connexion réussie !");
+        window.location.href = "index.html";
+    } else {
+        alert("Identifiants incorrects");
+    }
+});
+</script>
+
+</body>
+</html>
