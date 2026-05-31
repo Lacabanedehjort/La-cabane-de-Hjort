@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix, image: "image/Marque_page_drakkar.jpg" });
+    panier.push({ nom: nom, prix: prix, image: "Marque_page_drakkar.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
@@ -111,7 +111,7 @@ function logout() {
     <h2>Marque pages</h2>
     <div class="cards">
         <div class="article-card">
-            <img src="image/Marque_page_drakkar.jpg" width="144" height="192" alt="Article 1">
+            <img src="Marque_page_drakkar.jpg" width="144" height="192" alt="Article 1">
             <h3>Marque Page Drakkar</h3>
             <p>8€</p>
             <p>Marque page réctangle avec repaire en fil de micro-macramé de 1mm d'épaiseur de couleur acajou.</p>
