@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix, image: "image/Plateau_runique.jpg" });
+    panier.push({ nom: nom, prix: prix, image: "Plateau_runique.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
@@ -107,7 +107,7 @@ function logout() {
     <div class="cards">
         </div>
         <div class="article-card">
-            <img src="image/Plateau_runique.jpg" width="144" height="192" alt="Mon Article">
+            <img src="Plateau_runique.jpg" width="144" height="192" alt="Mon Article">
             <h3>Plateau Runique</h3>
             <p>35€</p>
             <p>Plateau de service rond de 35 cm de diamètre.</p>
