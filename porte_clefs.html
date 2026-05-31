@@ -107,6 +107,10 @@ function voirPCNoeud_de_bouclier(id) {
   localStorage.setItem("Porte-clefs Noeud de Bouclier", id);
   window.location.href = "porte-clefs_nœud_de_bouclier.html";
 }
+function voirPCYggdrasil_avec_symbole(id) {
+  localStorage.setItem("Porte-clefs Yggdrasil", id);
+  window.location.href = "porte-clefs_yggdrasil_avec_symbole.html";
+}
 function voirPCNoeud_de_dara(id) {
   localStorage.setItem("Porte-clefs Noeud de Dara", id);
   window.location.href = "porte-clefs_nœud_de_dara.html";
@@ -465,6 +469,12 @@ function voirPCCroix_templière(id) {
     <div class="card" onclick="voirPCCroix_templière('Porte-clefs Croix Templière')">
       <img src="Porte-clef_croix_templière.jpg" width="144" height="192" alt="Article 1">
       <h3>Porte-clefs Croix Templière</h3>
+      <p>5€</p>
+    </div>
+        
+    <div class="card" onclick="voirPCYggdrasil_avec_symbole('Porte-clefs Croix Templière')">
+      <img src="Porte-clef Yggdrasil avec Symbole.jpg" width="144" height="192" alt="Article 1">
+      <h3>Porte-clefs Yggdrasil</h3>
       <p>5€</p>
     </div>
 
