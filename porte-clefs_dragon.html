@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix, image: "image/Porte-clef_dragon.jpg" });
+    panier.push({ nom: nom, prix: prix, image: "Porte-clef_dragon.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
@@ -117,7 +117,7 @@ function logout() {
     <div class="cards">
         </div>
         <div class="article-card">
-            <img src="image/Porte-clef_dragon.jpg" width="144" height="192" alt="Article 3">
+            <img src="Porte-clef_dragon.jpg" width="144" height="192" alt="Article 3">
             <h3>Porte-clefs Dragon</h3>
             <p>5€</p>
             <p>Porte-clefs rectangle avec partie supérieur et inférieur arrondie et accroche en métal.</p>
