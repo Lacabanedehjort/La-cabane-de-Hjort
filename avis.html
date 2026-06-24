@@ -135,14 +135,14 @@ document.addEventListener("DOMContentLoaded", function() {
     <h3>Laisser un avis</h3>
     <form id="contact-form">
         <input type="text" id="name" placeholder="Votre nom" required>
-        <select id="rating" required>
-            <option value="">Note</option>
-            <option value="5">⭐⭐⭐⭐⭐</option>
-            <option value="4">⭐⭐⭐⭐</option>
-            <option value="3">⭐⭐⭐</option>
-            <option value="2">⭐⭐</option>
-            <option value="1">⭐</option>
-        </select>
+        <div class="rating">
+  <span class="star" data-value="1">★</span>
+  <span class="star" data-value="2">★</span>
+  <span class="star" data-value="3">★</span>
+  <span class="star" data-value="4">★</span>
+  <span class="star" data-value="5">★</span>
+        </div>
+        <p>Note : <span id="rating-value">0</span>/5</p>
         <textarea id="comment" style="font-family: Arial, sans-serif;" placeholder="Votre avis..." required></textarea>
         <button type="submit">Envoyer</button>
     </form>
