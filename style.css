@@ -453,3 +453,12 @@ footer {
     padding: 40px;
     background: #f8f6f2;
 }
+.star {
+  font-size: 30px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star.active {
+  color: gold;
+}
