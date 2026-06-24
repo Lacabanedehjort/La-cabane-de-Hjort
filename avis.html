@@ -107,6 +107,23 @@ document.addEventListener("DOMContentLoaded", function() {
     displayReviews();
 });
 </script>
+
+<script>
+const stars = document.querySelectorAll('.star');
+const ratingValue = document.getElementById('rating-value');
+
+stars.forEach(star => {
+  star.addEventListener('click', () => {
+    const value = star.dataset.value;
+
+    stars.forEach(s => {
+      s.classList.toggle('active', s.dataset.value <= value);
+    });
+
+    ratingValue.textContent = value;
+  });
+});
+</script>
 <body>
 
 <header>
