@@ -142,7 +142,24 @@ document.addEventListener("DOMContentLoaded", function() {
   <span class="star" data-value="4">★</span>
   <span class="star" data-value="5">★</span>
         </div>
-    <script>
+
+        <input type="hidden" id="rating" value="0">
+        <p>Note : <span id="rating-value">0</span>/5</p>
+        <textarea id="comment" style="font-family: Arial, sans-serif;" placeholder="Votre avis..." required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+</section>
+    
+<section id="mentionslegales" class="about">
+    <a href="mentions_légales.html">Mentions légales</a>
+</section>
+
+<footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+</footer>
+
+</body>
+        <script>
 document.addEventListener("DOMContentLoaded", function() {
 
     const stars = document.querySelectorAll('.star');
@@ -173,20 +190,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 </script>
-        <input type="hidden" id="rating" value="0">
-        <p>Note : <span id="rating-value">0</span>/5</p>
-        <textarea id="comment" style="font-family: Arial, sans-serif;" placeholder="Votre avis..." required></textarea>
-        <button type="submit">Envoyer</button>
-    </form>
-</section>
-    
-<section id="mentionslegales" class="about">
-    <a href="mentions_légales.html">Mentions légales</a>
-</section>
-
-<footer>
-    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
-</footer>
-
-</body>
 </html>
