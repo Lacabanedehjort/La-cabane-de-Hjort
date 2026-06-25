@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <h2>Avis clients</h2>
 
     <h3>Laisser un avis</h3>
-    <form id="contact-form">
+    <form id="review-form">
         <input type="text" id="name" placeholder="Votre nom" required>
         <div class="rating">
   <span class="star" data-value="1">★</span>
@@ -145,7 +145,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         <input type="hidden" id="rating" value="0">
         <p>Note : <span id="rating-value">0</span>/5</p>
-        <textarea id="comment" style="font-family: Arial, sans-serif;" placeholder="Votre avis..." required; rows="10" cols="50"></textarea>
+         <textarea
+id="comment"
+style="font-family: Arial, sans-serif; resize: vertical;"
+placeholder="Votre avis..."
+required
+rows="10"
+cols="50"></textarea>
         <button type="submit">Envoyer</button>
     </form>
 </section>
