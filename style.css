@@ -452,13 +452,14 @@ footer {
 .product-details, .product-reviews {
     padding: 40px;
     background: #f8f6f2;
-}
+    }
 .star {
-  font-size: 30px;
-  color: #ccc;
-  cursor: pointer;
+    color: gray;
+    font-size: 35px;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
 .star.active {
-  color: gold;
-}
+    color: gold;
+    }
