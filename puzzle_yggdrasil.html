@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function ajouterAuPanier(nom, prix) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
-    panier.push({ nom: nom, prix: prix, image: "Porte-clef_croix_celte_découpée.jpg" });
+    panier.push({ nom: nom, prix: prix, image: "Puzzle_Yggdrasil.jpg" });
 
     localStorage.setItem("panier", JSON.stringify(panier));
 }
