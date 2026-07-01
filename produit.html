@@ -72,6 +72,10 @@ function voirMP(id) {
   localStorage.setItem("Marque page", id);
   window.location.href = "marque_page.html";
 }
+function voirPZ(id) {
+  localStorage.setItem("Puzzle", id);
+  window.location.href = "puzzle.html";
+}
 </script>
 <body>
 
@@ -116,6 +120,9 @@ function voirMP(id) {
     
         <div class="card" onclick="voirMP('Marque page')" style="background-color:#333; color:#e6e6e6;">
             <h3>Marque page</h3>
+        </div>
+        <div class="card" onclick="voirPZ('Puzzle')" style="background-color:#333; color:#e6e6e6;">
+            <h3>Puzzle</h3>
         </div>
     </div>
 </section>
