@@ -51,7 +51,9 @@ function logout() {
 
 <form id="register-form" class="contact">
     <h1>Créer un compte</h1>
-    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="text" id="lastname" placeholder="Nom" required>
+    <input type="text" id="firstname" placeholder="Prénom" required>
+    <input type="email" id="email" placeholder="Adresse e-mail" required>
     <input type="password" id="password" placeholder="Mot de passe" required>
     <button type="submit">S'inscrire</button>
     <p>Déjà un compte ? <a href="login.html">Se connecter</a></p>
@@ -69,21 +71,31 @@ function logout() {
 document.getElementById("register-form").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const username = document.getElementById("username").value;
+    const lastname = document.getElementById("lastname").value.trim();
+    const firstname = document.getElementById("firstname").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value;
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Vérifie si utilisateur existe déjà
-    if (users.find(user => user.username === username)) {
-        alert("Utilisateur déjà existant !");
+    // Vérifie si l'adresse e-mail existe déjà
+    if (users.find(user => user.email === email)) {
+        alert("Un compte existe déjà avec cette adresse e-mail.");
         return;
     }
 
-    users.push({ username, password });
+    const newUser = {
+        lastname: lastname,
+        firstname: firstname,
+        email: email,
+        password: password
+    };
+
+    users.push(newUser);
+
     localStorage.setItem("users", JSON.stringify(users));
 
-    alert("Compte créé !");
+    alert("Compte créé avec succès !");
     window.location.href = "login.html";
 });
 </script>
