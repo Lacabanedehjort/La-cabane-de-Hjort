@@ -47,7 +47,9 @@ function logout() {
 
 <form id="login-form" class="contact">
     <h1>Connexion</h1>
-    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="text" id="lastname" placeholder="Nom" required>
+    <input type="text" id="firstname" placeholder="Prénom" required>
+    <input type="email" id="email" placeholder="Adresse e-mail" required>
     <input type="password" id="password" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
     <p>Pas de compte ? <a href="inscription.html">S'inscrire</a></p>
@@ -65,19 +67,26 @@ function logout() {
 document.getElementById("login-form").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const username = document.getElementById("username").value;
+    const lastname = document.getElementById("lastname").value.trim();
+    const firstname = document.getElementById("firstname").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value;
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const user = users.find(u => u.username === username && u.password === password);
+    const user = users.find(u =>
+        u.lastname === lastname &&
+        u.firstname === firstname &&
+        u.email.toLowerCase() === email &&
+        u.password === password
+    );
 
     if (user) {
-        localStorage.setItem("currentUser", username);
+        localStorage.setItem("currentUser", user.firstname + " " + user.lastname);
         alert("Connexion réussie !");
         window.location.href = "index.html";
     } else {
-        alert("Identifiants incorrects");
+        alert("Informations incorrectes.");
     }
 });
 </script>
