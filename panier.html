@@ -176,6 +176,7 @@ function afficherPanier() {
     totalElt.innerText = "Total : " + total + " €";
 
     localStorage.setItem("panier", JSON.stringify(panier));
+    updateCartDisplay();
 }
 
 function changerQuantite(index, variation) {
