@@ -461,3 +461,7 @@ footer {
 .star.active {
     color: gold;
     }
+a {
+    color: inherit;
+    text-decoration: none;
+}
