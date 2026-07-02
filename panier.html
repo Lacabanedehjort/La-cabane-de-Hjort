@@ -129,6 +129,7 @@ function afficherPanier() {
     localStorage.setItem("panier", JSON.stringify(panier));
     updateCartDisplay();
 }
+    mettreAJourCompteur();
 
 function changerQuantite(index, variation) {
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
@@ -194,6 +195,13 @@ function updateCartDisplay() {
         clearCartBtn.style.display = "inline-block";
         total.style.display = "block";
     }
+}
+</script>
+<script>
+    function mettreAJourCompteur() {
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    document.getElementById("cart-count").innerText = panier.length;
 }
 </script>
 <body>
