@@ -196,13 +196,11 @@ footer {
 }
 
 .btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #333;
+    background: #333;
     color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: 0.3s;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 .btn:hover {
