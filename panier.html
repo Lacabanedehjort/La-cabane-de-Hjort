@@ -76,55 +76,6 @@ function logout() {
     location.reload();
 }
 </script>
-<body>
-
-<header>
-    <nav>
-         <div class="logo-container">
-    <img src="Design1.svg" width="72" height="103.68" class="logo">
-</div>
-        <h2 class="logo">La cabane de Hjort</h2>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="produit.html">Nos produits</a></li>
-            <li><a href="index.html#apropos">À propos</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="mentions_légales.html">Mentions Légales</a></li>
-            <li><a href="avis.html">Avis</a></li>
-            <li><a href="inscription.html">Inscription</a></li>
-            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
-        </ul>
-    </nav>
-</header>
-<main>
-<section class="service">
-    <h1>🛒 Mon panier</h1>
-
-    <div id="cart-items" class="cart-grid"></div>
-    <div id="panier">
-
-    <p id="empty-cart" style="display:none;">
-        Votre panier est vide.
-    </p>
-
-    </div>
-    <div class="cart-summary">
-        <p id="cart-total"></p>
-        <button id="checkout-btn" onclick="commander()" style="background-color:#333; color: white; border: none; padding: 5px 10px; cursor: pointer;" class="btn">Acheter</button>
-        <button id="clear-cart-btn" onclick="viderPanier()" style="background-color: #333; color: white; border: none; padding: 5px 10px; cursor: pointer;" class="btn btn-secondary">Vider le panier</button>
-    </div>
-</section>
-</main>
-
-<section id="mentionslegales" class="about">
-    <a href="mentions_légales.html">Mentions légales</a>
-</section>
-
-<footer>
-    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
-</footer>
-
 <script>
 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
@@ -245,6 +196,55 @@ function updateCartDisplay() {
     }
 }
 </script>
+<body>
+
+<header>
+    <nav>
+         <div class="logo-container">
+    <img src="Design1.svg" width="72" height="103.68" class="logo">
+</div>
+        <h2 class="logo">La cabane de Hjort</h2>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="produit.html">Nos produits</a></li>
+            <li><a href="index.html#apropos">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions_légales.html">Mentions Légales</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="panier.html">🛒 <span id="cart-count">0</span></a>
+        </ul>
+    </nav>
+</header>
+<main>
+<section class="service">
+    <h1>🛒 Mon panier</h1>
+
+    <div id="cart-items" class="cart-grid"></div>
+    <div id="panier">
+
+    <p id="empty-cart" style="display:none;">
+        Votre panier est vide.
+    </p>
+
+    </div>
+    <div class="cart-summary">
+        <p id="cart-total"></p>
+        <button id="checkout-btn" onclick="commander()" style="background-color:#333; color: white; border: none; padding: 5px 10px; cursor: pointer;" class="btn">Acheter</button>
+        <button id="clear-cart-btn" onclick="viderPanier()" style="background-color: #333; color: white; border: none; padding: 5px 10px; cursor: pointer;" class="btn btn-secondary">Vider le panier</button>
+    </div>
+</section>
+</main>
+
+<section id="mentionslegales" class="about">
+    <a href="mentions_légales.html">Mentions légales</a>
+</section>
+
+<footer>
+    <p>© 2026 La cabane de Hjort - Tous droits réservés</p>
+</footer>
+
+
 </body>
-</html>
 </html>
