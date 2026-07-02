@@ -102,7 +102,16 @@ function logout() {
     <h1>🛒 Mon panier</h1>
 
     <div id="cart-items" class="cart-grid"></div>
+    <div id="panier">
+    <div id="cart-items"></div>
 
+    <p id="empty-cart" style="display:none;">
+        Votre panier est vide.
+    </p>
+
+    <button id="checkout-btn">Commander</button>
+    <button id="clear-cart-btn">Vider le panier</button>
+    </div>
     <div class="cart-summary">
         <p id="cart-total"></p>
         <button onclick="commander()" style="background-color:#333; color: white; border: none; padding: 5px 10px; cursor: pointer;"  class="btn">Acheter</button>
@@ -215,6 +224,24 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+</script>
+<script>   
+function updateCartDisplay() {
+    const cartItems = document.getElementById("cart-items");
+    const emptyCart = document.getElementById("empty-cart");
+    const checkoutBtn = document.getElementById("checkout-btn");
+    const clearCartBtn = document.getElementById("clear-cart-btn");
+
+    if (cartItems.children.length === 0) {
+        emptyCart.style.display = "block";
+        checkoutBtn.style.display = "none";
+        clearCartBtn.style.display = "none";
+    } else {
+        emptyCart.style.display = "none";
+        checkoutBtn.style.display = "inline-block";
+        clearCartBtn.style.display = "inline-block";
+    }
+}
 </script>
 </body>
 </html>
