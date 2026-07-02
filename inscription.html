@@ -12,10 +12,11 @@
 <button onclick="logout()" style="background-color: #836435; border: none; padding: 10px 20px; cursor: pointer;">Se déconnecter</button>
 
 <script>
-const user = localStorage.getItem("currentUser");
+const user = JSON.parse(localStorage.getItem("currentUser"));
 
 if (user) {
-    document.getElementById("user-info").innerText = "Connecté : " + user;
+    document.getElementById("user-info").innerText =
+        "Connecté : " + user.firstname + " " + user.lastname;
 }
 
 function logout() {
