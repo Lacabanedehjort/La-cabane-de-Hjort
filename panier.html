@@ -103,7 +103,6 @@ function logout() {
 
     <div id="cart-items" class="cart-grid"></div>
     <div id="panier">
-    <div id="cart-items"></div>
 
     <p id="empty-cart" style="display:none;">
         Votre panier est vide.
@@ -112,8 +111,8 @@ function logout() {
     </div>
     <div class="cart-summary">
         <p id="cart-total"></p>
-        <button onclick="commander()" style="background-color:#333; color: white; border: none; padding: 5px 10px; cursor: pointer;"  class="btn">Acheter</button>
-        <button onclick="viderPanier()" style="background-color: #333; color: white; border: none; padding: 5px 10px; cursor: pointer;" class="btn btn-secondary">Vider le panier</button>
+        <button id="checkout-btn" onclick="commander()" style="background-color:#333; color: white; border: none; padding: 5px 10px; cursor: pointer;" class="btn">Acheter</button>
+        <button id="clear-cart-btn" onclick="viderPanier()" style="background-color: #333; color: white; border: none; padding: 5px 10px; cursor: pointer;" class="btn btn-secondary">Vider le panier</button>
     </div>
 </section>
 </main>
@@ -225,19 +224,23 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>   
 function updateCartDisplay() {
-    const cartItems = document.getElementById("cart-items");
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
     const emptyCart = document.getElementById("empty-cart");
     const checkoutBtn = document.getElementById("checkout-btn");
     const clearCartBtn = document.getElementById("clear-cart-btn");
+    const total = document.getElementById("cart-total");
 
-    if (cartItems.children.length === 0) {
+    if (panier.length === 0) {
         emptyCart.style.display = "block";
         checkoutBtn.style.display = "none";
         clearCartBtn.style.display = "none";
+        total.style.display = "none";
     } else {
         emptyCart.style.display = "none";
         checkoutBtn.style.display = "inline-block";
         clearCartBtn.style.display = "inline-block";
+        total.style.display = "block";
     }
 }
 </script>
